@@ -1,72 +1,41 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, ROUTES, Routes } from '@angular/router';
-import { DayComponent } from './components/day/day.component';
-import { HomeComponent } from './components/home/home.component';
-import { NightComponent } from './components/night/night.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { TopSecretComponent } from './components/top-secret/top-secret.component';
+import { NgModule, Type } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PaymentsComponent } from './components/payments/payments.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
+import { TradeComponent } from './components/trade/trade.component';
 
-function getMillis(hours: number) {
-  return hours * 60 * 60 * 100;
-}
+export type MenuType = {
+  burgerMenu: {
+    menuPath: string;
+    urlType: string;
+    menuName: string;
+    id: string;
+    externalUrlTarget: '_blank';
+  }[];
+};
 
-const standardRoutes: Routes = [
+export const componentMap: { [K: string]: Type<any> } = {
+  dashboard: DashboardComponent,
+  payments: PaymentsComponent,
+  accounts: AccountsComponent,
+  trade: TradeComponent,
+};
+
+const standardRoutes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'dashboard',
+    component: DashboardComponent,
   },
-  {
-    path: '404',
-    component: NotFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: '404'
-  }
 ];
-
 @NgModule({
-  imports: [RouterModule.forRoot([])],
+  imports: [RouterModule.forRoot(standardRoutes)],
   exports: [RouterModule],
-  providers: [
-    {
-      provide: ROUTES,
-      useFactory: () => {
-        let routes: Routes = [];
-        const currentTime = new Date().getTime();
-
-        if (currentTime < getMillis(6) || currentTime > getMillis(18)) {
-          routes.push({
-            path: 'night',
-            component: NightComponent
-          });
-        }
-        else {
-          routes.push({
-            path: 'day',
-            component: DayComponent
-          });
-        }
-
-        if (Math.random() < 0.5) {
-          routes.push({
-            path: 'secret',
-            component: TopSecretComponent
-          });
-        }
-
-        return [
-          ...routes,
-          ...standardRoutes
-        ];
-      },
-      multi: true
-    }
-  ]
+  providers: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

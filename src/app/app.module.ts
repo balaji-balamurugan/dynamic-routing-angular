@@ -1,27 +1,22 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DayComponent } from './components/day/day.component';
-import { NightComponent } from './components/night/night.component';
-import { TopSecretComponent } from './components/top-secret/top-secret.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HomeComponent } from './components/home/home.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PaymentsComponent } from './components/payments/payments.component';
+import { TradeComponent } from './components/trade/trade.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DayComponent,
-    NightComponent,
-    TopSecretComponent,
-    NotFoundComponent,
-    HomeComponent
+    DashboardComponent,
+    AccountsComponent,
+    PaymentsComponent,
+    TradeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

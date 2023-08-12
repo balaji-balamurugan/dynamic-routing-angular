@@ -1,6 +1,13 @@
-<button routerLink="/home">Home</button>
-<button routerLink="/day">Day</button>
-<button routerLink="/night">Night</button>
-<button routerLink="/secret">Secret</button>
+<ng-container *ngFor="let menu of burgerMenu">
+  <ng-container *ngIf="menu?.urlType === 'internal'; else external">
+    <button [routerLink]="menu?.menuPath"
+      style="margin: 0px 5px">{{menu?.menuName}}</button>
+  </ng-container>
+
+  <ng-template #external>
+    <button (click)="openUrl(menu)"
+      style="margin: 0px 5px">{{menu?.menuName}}</button>
+  </ng-template>
+</ng-container>
 
 <router-outlet></router-outlet>

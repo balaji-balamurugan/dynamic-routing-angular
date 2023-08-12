@@ -1,0 +1,35 @@
+{
+  "burgerMenu": [
+    {
+      "menuPath": "dashboard",
+      "urlType": "internal",
+      "menuName": "DashBoard",
+      "id": "dashboard"
+    },
+    {
+      "menuPath": "accounts",
+      "urlType": "internal",
+      "menuName": "Accounts",
+      "id": "accounts"
+    },
+    {
+      "menuPath": "payments",
+      "urlType": "internal",
+      "menuName": "Payments",
+      "id": "payments"
+    },
+    {
+      "menuPath": "trade",
+      "urlType": "internal",
+      "menuName": "Trade",
+      "id": "trade"
+    },
+    {
+      "menuPath": "https://mail.google.com/",
+      "urlType": "external",
+      "menuName": "Corp Admin",
+      "id": "corp-admin",
+      "externalUrlTarget": "_blank"
+    }
+  ]
+}
